@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script type="text/javascript" src="/static/nicEdit/nicEdit.js"></script>
+    <title>test</title>
+    
+    <script type="text/javascript">
+        bkLib.onDomLoaded(function() {
+            new nicEditor({
+                fullPanel : false,
+                iconsPath : '/static/nicEdit/nicEditorIcons.gif',
+                uploadURI : '/test/uploadImg'
+                }).panelInstance('area1');
+        });
+    </script>    
+    
+</head>
+<body>
+    <div class="content">
+        {% if formData %}
+        {{ formData|safe }}
+        {% endif %}
+        <form method="post">
+            <textarea rows="20" name="formData" id="area1" style="width:100%">{{ formData|safe }}</textarea>
+            <input class="btn" type="submit" value="提交" />
+        </form>
+    </div>
+</body>
+</html>
+
