@@ -28,7 +28,7 @@
         a. 返回的json数据中，获取图片路径link，添加倒文本框im中，1451行。
     5. 配置可以编辑html，方便调整图片宽度等。272行，在buttonList中，加入'xhtml'。
 - 使用实例
----
+    ```
     <!doctype html>
     <html>
     <head>
@@ -57,8 +57,7 @@
         </div>
     </body>
     </html>
----
-
+    ```
 ## 子应用
 1. 子应用中，web.ctx.fullpath是剥离了主应用的path，如果设置url（如：分页url，判断登陆转到主页）时，需手动设置：加上子应用前缀，或将web.ctx.fullpath改为web.ctx.homedomain。
 2. web.seeother与web.ctx有关，注意路径问题。
