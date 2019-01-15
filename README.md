@@ -28,14 +28,12 @@
         a. 返回的json数据中，获取图片路径link，添加倒文本框im中，1451行。
     5. 配置可以编辑html，方便调整图片宽度等。272行，在buttonList中，加入'xhtml'。
 - 使用实例
-
     <!doctype html>
     <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <script type="text/javascript" src="/static/nicEdit/nicEdit.js"></script>
         <title>test</title>
-
         <script type="text/javascript">
             bkLib.onDomLoaded(function() {
                 new nicEditor({
@@ -45,7 +43,6 @@
                     }).panelInstance('area1');
             });
         </script>    
-
     </head>
     <body>
         <div class="content">
