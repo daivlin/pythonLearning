@@ -1,1 +1,42 @@
 #coding:utf-8
+def decodeStr(text):
+    return unicode(text.decode("gbk"))
+
+class AdminMemberMultiAdd(CheckAuthority000200):
+    def POST(self):
+        i = web.input(multiMember={})
+        if not i["multiMember"].file.read():
+            return "<script>alert('no data!');history.back();</script>"
+        import csv,StringIO
+        #io = StringIO.StringIO(i["multiMember"].value)
+        c = list(csv.reader(StringIO.StringIO(i["multiMember"].value)))
+        from web.utils import dictreverse
+        workGradeDict = dictreverse(conf.workGradeDict)
+        with db.transaction():
+            for i in c[2:]:
+                try:
+                    name = db.select("team_member",what="name",where="name=$name",vars={"name":decodeStr(i[2])})[0]["name"]
+                except:
+                    name = None
+                if name:
+                    #web.header("Content-Type","text/html;charset=utf-8")
+                    #return u"<script>alert('{0}存在');history.go(-1);</script>".format(name,)
+                    continue
+                else:
+                    db.insert(
+                        "team_member",
+                        workGrade = workGradeDict[decodeStr(i[1])],
+                        name = decodeStr(i[2]),
+                        sex = decodeStr(i[3]),
+                        workTime = decodeStr(i[4]),
+                        schoolGrade = decodeStr(i[5]),
+                        skill = decodeStr(i[6]),
+                        graduateSchool = decodeStr(i[7]),
+                        graduateSpeciality = decodeStr(i[8]),
+                        IDNumber = decodeStr(i[9]),
+                        phoneNumber = decodeStr(i[10]),
+                        ability = decodeStr(i[11]),
+                        picture = "",
+                    )
+                    record_log(u"批量新增",u"班组成员",decodeStr(i[2]))
+        raise web.seeother("/admin/member")
