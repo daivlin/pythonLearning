@@ -27,37 +27,7 @@
     4. 在文本框中显示：
         a. 返回的json数据中，获取图片路径link，添加倒文本框im中，1451行。
     5. 配置可以编辑html，方便调整图片宽度等。272行，在buttonList中，加入'xhtml'。
-- 使用实例
-    ```
-    <!doctype html>
-    <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <script type="text/javascript" src="/static/nicEdit/nicEdit.js"></script>
-        <title>test</title>
-        <script type="text/javascript">
-            bkLib.onDomLoaded(function() {
-                new nicEditor({
-                    fullPanel : false,
-                    iconsPath : '/static/nicEdit/nicEditorIcons.gif',
-                    uploadURI : '/test/uploadImg'
-                    }).panelInstance('area1');
-            });
-        </script>    
-    </head>
-    <body>
-        <div class="content">
-            {% if formData %}
-            {{ formData|safe }}
-            {% endif %}
-            <form method="post">
-                <textarea rows="20" name="formData" id="area1" style="width:100%">{{ formData|safe }}</textarea>
-                <input class="btn" type="submit" value="提交" />
-            </form>
-        </div>
-    </body>
-    </html>
-    ```
+
 ## 子应用
 1. 子应用中，web.ctx.fullpath是剥离了主应用的path，如果设置url（如：分页url，判断登陆转到主页）时，需手动设置：加上子应用前缀，或将web.ctx.fullpath改为web.ctx.homedomain。
 2. web.seeother与web.ctx有关，注意路径问题。
