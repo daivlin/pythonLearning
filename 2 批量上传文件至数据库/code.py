@@ -1,8 +1,15 @@
-#coding:utf-8
+## 前端HTML代码
+<form enctype="multipart/form-data" method="post">
+    <input type="file" name="multiMember"/>
+</form>
+
+## 后台获取上传文件
+
 def decodeStr(text):
+    """解码 py2 """
     return unicode(text.decode("gbk"))
 
-class AdminMemberMultiAdd(CheckAuthority000200):
+class AdminMemberMultiAdd(object):
     def POST(self):
         i = web.input(multiMember={})
         if not i["multiMember"].file.read():
