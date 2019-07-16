@@ -10,3 +10,23 @@ import datetime
 timenow = (datetime.datetime.utcnow() + datetime.timedelta(hours=8))
 currentTime = timenow.strftime("%Y-%m-%d %H:%M")
 ```
+## 设置csrf_token
+1. 后台
+```
+#设置csrf_token
+def  csrf_token():
+    if "csrf_token" not in web.ctx.session:
+        from uuid import uuid4
+        web.ctx.session.csrf_token = uuid4().hex
+    return web.ctx.session.csrf_token
+
+#判断csrf_token
+if not ("csrf_token" in i and i.csrf_token == web.ctx.session.pop('csrf_token',None)):
+    raise web.HTTPError(
+        "400 Bad request",{"content-type":"text/html"},"""Cross-site request forgery(CSRF) attempt"""
+    )
+```
+2. 前端（在form中）
+```
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+```
