@@ -30,7 +30,6 @@ if not ("csrf_token" in i and i.csrf_token == web.ctx.session.pop('csrf_token',N
 ```
 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 ```
-
-
-## 富文本编辑器nicedit使用
-1. 在表单验证里，如果设置nicedit不能为空。输入无效，不能提交表单，这个bug待修复。
+## 其他
+1. 富文本编辑器nicedit使用:在表单验证里，如果设置nicedit不能为空。输入无效，不能提交表单，这个bug待修复。
+2. POST提交后，用raise 重定向
