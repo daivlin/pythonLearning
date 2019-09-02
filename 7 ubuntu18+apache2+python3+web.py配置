@@ -1,4 +1,4 @@
-(参考)[https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-ubuntu-16-04#conclusion]
+[参考](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-ubuntu-16-04#conclusion)[https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-ubuntu-16-04#conclusion)
 
 一、 安装apache2、python3-pip、mod_wsgi版本
 1、 sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3
