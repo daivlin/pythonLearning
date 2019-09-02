@@ -14,8 +14,9 @@
 
 三、 Configure Apache
 1、 sudo vim /etc/apache2/sites-available/000-default.conf
-
-<VirtualHost *:80>         # The ServerName directive sets the request scheme, hostname and port that
+```
+<VirtualHost *:80>         
+        # The ServerName directive sets the request scheme, hostname and port that
         # the server uses to identify itself. This is used when creating        # redirection URLs. In the context of virtual hosts, the ServerName        # specifies what hostname must appear in the request's Host: header to        # match this virtual host. For the default virtual host (this file) this
         # value is not decisive as it is used as a last resort host regardless.
         # However, you must set it for any further virtual host explicitly.
@@ -54,14 +55,14 @@
         <Directory /home/ubuntu/myWebSite/static>
                 Require all granted
         </Directory>
-
-
 </VirtualHost>
+```
 
 2、 修改读写权限	如文本读写，数据库读写
 3、 检查配置 	sudo apache2ctl configtest
 4、 重启apache2 	sudo systemctl restart apache2
 
 ========= 如果出错 ==========
+
 1、 查看日志	tail /var/log/apache2/error.log
 
