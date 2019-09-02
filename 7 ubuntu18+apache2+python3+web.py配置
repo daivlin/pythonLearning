@@ -61,5 +61,5 @@
 4、 重启apache2 	sudo systemctl restart apache2
 
 ========= 如果出错 ==========
-1、 查看日志	cat /var/log/apache2/error.log
+1、 查看日志	tail /var/log/apache2/error.log
 
