@@ -1,19 +1,19 @@
 [参考](https://www.digitalocean.com/community/tutorials/how-to-serve-django-applications-with-apache-and-mod_wsgi-on-ubuntu-16-04#conclusion)
 
-一、 安装apache2、python3-pip、mod_wsgi版本
-1、 sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3
+### 安装apache2、python3-pip、mod_wsgi版本
+- sudo apt-get install python3-pip apache2 libapache2-mod-wsgi-py3
 
-二、 安装python版本
-1、 安装虚拟环境	sudo pip3 install virtualenv
-2、 安装python版本（-p python3）	virtualenv -p python3 myprojectenv
-3、 安装启动虚拟环境		source myprojectenv/bin/activate
-4、 查看pip版本	pip --version
-5、 安装软件包	pip install django
-6、 在虚拟环境中运行项目	python index.py
-7、 退出虚拟环境	deactivate
+### 安装python版本
+- 安装虚拟环境	sudo pip3 install virtualenv
+- 安装python版本（-p python3）	virtualenv -p python3 myprojectenv
+- 安装启动虚拟环境		source myprojectenv/bin/activate
+- 查看pip版本	pip --version
+- 安装软件包	pip install django
+- 在虚拟环境中运行项目	python index.py
+- 退出虚拟环境	deactivate
 
-三、 Configure Apache
-1、 sudo vim /etc/apache2/sites-available/000-default.conf
+### Configure Apache
+-  sudo vim /etc/apache2/sites-available/000-default.conf
 ```
 <VirtualHost *:80>         
         # The ServerName directive sets the request scheme, hostname and port that
@@ -57,12 +57,10 @@
         </Directory>
 </VirtualHost>
 ```
+- 修改读写权限	如文本读写，数据库读写
+- 检查配置 	sudo apache2ctl configtest
+- 重启apache2 	sudo systemctl restart apache2
 
-2、 修改读写权限	如文本读写，数据库读写
-3、 检查配置 	sudo apache2ctl configtest
-4、 重启apache2 	sudo systemctl restart apache2
-
-========= 如果出错 ==========
-
-1、 查看日志	tail /var/log/apache2/error.log
+### ========= 如果出错 ==========
+- 查看日志	tail /var/log/apache2/error.log
 
