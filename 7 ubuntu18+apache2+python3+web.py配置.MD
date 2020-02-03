@@ -65,5 +65,5 @@
 - 查看日志	tail /var/log/apache2/error.log
 
 ### ssh 发送文件至服务器
-- scp -r /media/daivlin/DAIVLIN/web11/myPro/ ubuntu@132.232.119.208:/home/ubuntu/myWebSite  
+- scp -r /media/daivlin/DAIVLIN/web11/myPro/ uName@Host:/home/uName/myWebSite  
 
