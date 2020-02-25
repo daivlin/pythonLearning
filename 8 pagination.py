@@ -1,5 +1,5 @@
-# coding:utf-8
-# simple pagination 
+#coding:utf-8
+# for flask
 # auth : daivlin
 # date : 2020-02-22
 
@@ -24,17 +24,17 @@ class Pagination(object):
         if self.page_max in (0,1) :
             html = '''
                 <ul>
-                    <li class="disabled"><a>首页</a></li> 
-                    <li class="disabled"><a>上一页</a></li> 
-                    <li class="disabled"><a>下一页</a></li> 
-                    <li class="disabled"><a>尾页</a></li>
+                    <li><a>首页</a></li> 
+                    <li><a>上一页</a></li> 
+                    <li><a>下一页</a></li> 
+                    <li><a>尾页</a></li>
                 </ul>
             '''
         elif self.page_current <= 1:
             html = '''
                 <ul>
-                    <li class="disabled"><a>首页</a></li> 
-                    <li class="disabled"><a>上一页</a></li> 
+                    <li><a>首页</a></li> 
+                    <li><a>上一页</a></li> 
                     <li><a href="?page={self.page_next}">下一页</a></li> 
                     <li><a href="?page={self.page_max}">尾页</a></li>
                 </ul>
@@ -44,8 +44,8 @@ class Pagination(object):
                 <ul>
                     <li><a href="?page=1">首页</a></li> 
                     <li><a href="?page={self.page_pre}">上一页</a></li> 
-                    <li class="disabled"><a>下一页</a></li> 
-                    <li class="disabled"><a>尾页</a></li>
+                    <li><a>下一页</a></li> 
+                    <li><a>尾页</a></li>
                 </ul>   
             '''.format(self=self)
         else:
@@ -59,10 +59,10 @@ class Pagination(object):
             '''.format(self=self)
         banner = '''
                     <ul>
-                        <li class="disabled">
+                        <li>
                             <a>第<code>{self.page_current}</code>页</a>
                         </li>
-                        <li class="disabled">
+                        <li>
                             <a>共<code>{self.page_max}</code>页</a>
                         </li>
                     </ul>
