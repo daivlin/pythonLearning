@@ -4,7 +4,22 @@
 # date : 2020-02-22
 
 class Pagination(object):
-    '''分页类'''
+    '''
+        分页类
+        参数：
+            per_page：每页数量
+            total_data：总数目
+            cur_page：当前页。
+        用法：(flask，html中自定义css)
+            py:
+                page = int(request.args.get("page",1))  #获取args参数'page'
+                per_page = 50   #每页的数量
+                dsubAll = query_db("SELECT COUNT(id) AS C FROM dsub",one=True)["C"] #总数目
+                pages = Pagination(cur_page=page,per_page=per_page,total_data=dsubAll)  #分页类
+                dsub = query_db("SELECT * FROM dsub LIMIT ?,?",(pages.offset,pages.limit))  #取offset与limit进行分页
+            html:
+                <div>{{ pages.get_html() | safe }}</div>       
+    '''
     def __init__(self,per_page=5,total_data=10,cur_page=1):
         import math
         self.size = per_page
