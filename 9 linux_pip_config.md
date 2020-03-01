@@ -12,6 +12,22 @@ mkdir ~/.pip
 
 vi ~/.pip/pip.conf
 
+- 永久修改：
+linux:
+修改 ~/.pip/pip.conf (没有就创建一个)， 内容如下：
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
+- windows:
+直接在user目录中创建一个pip目录，如：C:\Users\xx\pip，新建文件pip.ini，内容如下
+```
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+```
+
+
+
     配置文件内容
 
     mirrors.tuna.tsinghua.edu.cn 是清华的源地址，上面还有很多其它的源
