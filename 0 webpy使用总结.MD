@@ -31,5 +31,25 @@ if not ("csrf_token" in i and i.csrf_token == web.ctx.session.pop('csrf_token',N
 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
 ```
 ## 其他
-1. 富文本编辑器nicedit使用:在表单验证里，如果设置nicedit不能为空。输入无效，不能提交表单，这个bug待修复。
-2. POST提交后，用raise 重定向
+1. 富文本编辑器nicedit使用:在表单验证里，如果设置nicedit不能为空。输入无效，不能提交表单，这个bug待修复。  
+2. POST提交后，用raise 重定向  
+3. 【错误记录/web.py】RuntimeError: generator raised StopIteration(in __iter__ raise StopIteration())
+    --> 即修改web.py安装目录下的httpserver.py文件
+```python
+def __iter__(self):
+    # ...
+    try:
+        path = self.translate_path(self.path)
+        etag = '"%s"' % os.path.getmtime(path)
+        client_etag = environ.get("HTTP_IF_NONE_MATCH")
+        self.send_header("ETag", etag)
+        if etag == client_etag:
+            self.send_response(304, "Not Modified")
+            self.start_response(self.status, self.headers)
+            return
+    except OSError:
+        pass  # Probably a 404
+    except StopIteration: # 添加
+        return # 添加
+```
+
