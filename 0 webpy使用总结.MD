@@ -35,6 +35,7 @@ if not ("csrf_token" in i and i.csrf_token == web.ctx.session.pop('csrf_token',N
 2. POST提交后，用raise 重定向  
 3. 【错误记录/web.py】RuntimeError: generator raised StopIteration(in __iter__ raise StopIteration())
     --> 即修改web.py安装目录下的httpserver.py文件
+    [参考](https://blog.csdn.net/qq_33446100/article/details/104740822?fps=1&locationNum=2)
 ```python
 def __iter__(self):
     # ...
